@@ -725,6 +725,35 @@ postgres_dialect.replace(
             "RETURNING",
             Ref("DatatypeSegment"),
         ),
+        # Clauses of the SQL/JSON query functions json_exists, json_query and
+        # json_value
+        # https://www.postgresql.org/docs/current/functions-json.html#SQLJSON-QUERY-FUNCTIONS
+        Sequence(
+            OneOf(
+                "WITHOUT",
+                Sequence("WITH", OneOf("CONDITIONAL", "UNCONDITIONAL", optional=True)),
+            ),
+            Ref.keyword("ARRAY", optional=True),
+            "WRAPPER",
+        ),
+        Sequence(
+            OneOf("KEEP", "OMIT"),
+            "QUOTES",
+            Sequence("ON", "SCALAR", "STRING", optional=True),
+        ),
+        Sequence(
+            OneOf(
+                "ERROR",
+                "NULL",
+                "TRUE",
+                "FALSE",
+                "UNKNOWN",
+                Sequence("EMPTY", OneOf("ARRAY", "OBJECT", optional=True)),
+                Sequence("DEFAULT", Ref("ExpressionSegment")),
+            ),
+            "ON",
+            OneOf("EMPTY", "ERROR"),
+        ),
         Sequence(
             # Allow an optional distinct keyword here.
             Ref.keyword("DISTINCT", optional=True),
