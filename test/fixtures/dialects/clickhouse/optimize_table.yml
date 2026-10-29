@@ -1,0 +1,215 @@
+# YML test files are auto-generated from SQL files and should not be edited by
+# hand. To help enforce this, the "hash" field in the file must match a hash
+# computed by SQLFluff when running the tests. Please run
+# `python test/generate_parse_fixture_yml.py`  to generate them after adding or
+# altering SQL files.
+_hash: 30173e455e6bf6d71e5b71a30ff1485b6cd23b287ddb2d511777f61f0ebb1c1f
+file:
+- statement:
+    optimize_table_statement:
+    - keyword: OPTIMIZE
+    - keyword: TABLE
+    - table_reference:
+        naked_identifier: example
+- statement_terminator: ;
+- statement:
+    optimize_table_statement:
+    - keyword: OPTIMIZE
+    - keyword: TABLE
+    - table_reference:
+      - naked_identifier: db
+      - dot: .
+      - naked_identifier: example
+    - keyword: FINAL
+- statement_terminator: ;
+- statement:
+    optimize_table_statement:
+    - keyword: OPTIMIZE
+    - keyword: TABLE
+    - table_reference:
+        naked_identifier: example
+    - on_cluster_clause:
+      - keyword: 'ON'
+      - keyword: CLUSTER
+      - naked_identifier: my_cluster
+    - keyword: FINAL
+- statement_terminator: ;
+- statement:
+    optimize_table_statement:
+    - keyword: OPTIMIZE
+    - keyword: TABLE
+    - table_reference:
+        naked_identifier: example
+    - keyword: PARTITION
+    - numeric_literal: '201901'
+    - keyword: FINAL
+- statement_terminator: ;
+- statement:
+    optimize_table_statement:
+    - keyword: OPTIMIZE
+    - keyword: TABLE
+    - table_reference:
+        naked_identifier: example
+    - keyword: PARTITION
+    - keyword: ID
+    - quoted_identifier: "'201901'"
+    - keyword: FINAL
+    - keyword: DEDUPLICATE
+- statement_terminator: ;
+- statement:
+    optimize_table_statement:
+    - keyword: OPTIMIZE
+    - keyword: TABLE
+    - table_reference:
+        naked_identifier: example
+    - keyword: PARTITION
+    - function:
+        function_name:
+          function_name_identifier: tuple
+        function_contents:
+          bracketed:
+          - start_bracket: (
+          - expression:
+              quoted_literal: "'JP'"
+          - comma: ','
+          - expression:
+              function:
+                function_name:
+                  function_name_identifier: toYYYYMM
+                function_contents:
+                  bracketed:
+                    start_bracket: (
+                    expression:
+                      function:
+                        function_name:
+                          function_name_identifier: toDate
+                        function_contents:
+                          bracketed:
+                            start_bracket: (
+                            expression:
+                              quoted_literal: "'2019-01-25'"
+                            end_bracket: )
+                    end_bracket: )
+          - end_bracket: )
+    - keyword: FINAL
+- statement_terminator: ;
+- statement:
+    optimize_table_statement:
+    - keyword: OPTIMIZE
+    - keyword: TABLE
+    - table_reference:
+        naked_identifier: example
+    - keyword: FORCE
+- statement_terminator: ;
+- statement:
+    optimize_table_statement:
+    - keyword: OPTIMIZE
+    - keyword: TABLE
+    - table_reference:
+        naked_identifier: example
+    - keyword: DEDUPLICATE
+- statement_terminator: ;
+- statement:
+    optimize_table_statement:
+    - keyword: OPTIMIZE
+    - keyword: TABLE
+    - table_reference:
+        naked_identifier: example
+    - keyword: FINAL
+    - keyword: DEDUPLICATE
+    - keyword: BY
+    - column_reference:
+        naked_identifier: primary_key
+    - comma: ','
+    - column_reference:
+        naked_identifier: secondary_key
+    - comma: ','
+    - column_reference:
+        naked_identifier: partition_key
+- statement_terminator: ;
+- statement:
+    optimize_table_statement:
+    - keyword: OPTIMIZE
+    - keyword: TABLE
+    - table_reference:
+        naked_identifier: example
+    - keyword: FINAL
+    - keyword: DEDUPLICATE
+    - keyword: BY
+    - star: '*'
+- statement_terminator: ;
+- statement:
+    optimize_table_statement:
+    - keyword: OPTIMIZE
+    - keyword: TABLE
+    - table_reference:
+        naked_identifier: example
+    - keyword: FINAL
+    - keyword: DEDUPLICATE
+    - keyword: BY
+    - star: '*'
+    - keyword: EXCEPT
+    - column_reference:
+        naked_identifier: materialized_value
+- statement_terminator: ;
+- statement:
+    optimize_table_statement:
+    - keyword: OPTIMIZE
+    - keyword: TABLE
+    - table_reference:
+        naked_identifier: example
+    - keyword: FINAL
+    - keyword: DEDUPLICATE
+    - keyword: BY
+    - star: '*'
+    - keyword: EXCEPT
+    - bracketed:
+      - start_bracket: (
+      - column_reference:
+          naked_identifier: materialized_value
+      - comma: ','
+      - column_reference:
+          naked_identifier: value
+      - end_bracket: )
+- statement_terminator: ;
+- statement:
+    optimize_table_statement:
+    - keyword: OPTIMIZE
+    - keyword: TABLE
+    - table_reference:
+        naked_identifier: example
+    - keyword: FINAL
+    - keyword: DEDUPLICATE
+    - keyword: BY
+    - function:
+        function_name:
+          function_name_identifier: COLUMNS
+        function_contents:
+          bracketed:
+            start_bracket: (
+            expression:
+              quoted_literal: "'.*_key'"
+            end_bracket: )
+- statement_terminator: ;
+- statement:
+    optimize_table_statement:
+    - keyword: OPTIMIZE
+    - keyword: TABLE
+    - table_reference:
+        naked_identifier: example
+    - keyword: FINAL
+    - keyword: DEDUPLICATE
+    - keyword: BY
+    - function:
+        function_name:
+          function_name_identifier: COLUMNS
+        function_contents:
+          bracketed:
+            start_bracket: (
+            expression:
+              quoted_literal: "'.*_key'"
+            end_bracket: )
+    - keyword: EXCEPT
+    - column_reference:
+        naked_identifier: secondary_key
+- statement_terminator: ;

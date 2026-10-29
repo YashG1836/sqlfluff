@@ -162,6 +162,7 @@ UNRESERVED_KEYWORDS = [
     "FIRST",
     "FLUSH",
     "FOR",
+    "FORCE",
     "FORMAT",
     "FREEZE",
     "FROM",
