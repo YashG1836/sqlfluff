@@ -319,6 +319,9 @@ mysql_dialect.sets("bare_functions").update(
 )
 
 mysql_dialect.replace(
+    # `t1 STRAIGHT_JOIN t2` is a join that reads the left table first.
+    # https://dev.mysql.com/doc/refman/8.4/en/join.html
+    JoinKeywordsGrammar=OneOf("JOIN", "STRAIGHT_JOIN"),
     # A function parameter: name type, with no direction (`sp_fdparam`).
     FunctionParameterGrammar=Sequence(
         Ref("ParameterNameSegment"),
